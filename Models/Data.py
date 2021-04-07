@@ -19,7 +19,7 @@ class Data():
     def update(self):
         table = Data.db.table(self.__class__.__name__)
         query = Query()
-        table.update(self.)
+        table.update(self)
 
     def delete(self):
         table = Data.db.table(self.__class__.__name__)
