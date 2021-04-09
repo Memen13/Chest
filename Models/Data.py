@@ -4,29 +4,34 @@
 from tinydb import TinyDB, Query, where
 
 
-class Data():
+class DataTournament():
     """
-    Class générale héritée sur les autres models afin de gérer la base de donnée
+        Class générale héritée sur les autres models afin de gérer la base de donnée
 
-    """
-
-    db = TinyDB('data/db.json')
-
-    def save(self, data):
-        table = Data.db.table(self.__class__.__name__)
-        Data.db.insert(self.__dict__)
+        """
+    def __init__(self,objectTournament):
+        self.objectTournament = objectTournament
+        self.db = TinyDB(self.objectTournament.name + '.json')
+        self.table = self.db.table("Tournois")
 
     def update(self):
-        table = Data.db.table(self.__class__.__name__)
-        query = Query()
-        table.update(self)
+        self.table.insert({"name" : self.objectTournament.name})
 
-    def delete(self):
-        table = Data.db.table(self.__class__.__name__)
-        query = Query()
-        table.remove()
+    def delete(self, number):
+         self.table.remove({"id" : number)
 
     def search(self):
         table = Data.db.table(self.__class__.__name__)
         Data.get()
 
+    def load(self):
+
+class DataPlayer():
+
+    def __init__(self,objectTournament):
+        self.objectTournament = objectTournament
+        self.db = TinyDB(self.objectTournament.name + '.json')
+        self.table = self.db.table("Tournois")
+
+    def update(self):
+        self.table.insert({"name" : self.objectTournament.name})
