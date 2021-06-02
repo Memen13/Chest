@@ -1,19 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from Models.Players import PlayerModel
 
-class ManagePlayers():
+class Player():
+"""
+docstring
+ """
+    def __init__(self):
+        while True:
+            self.first_name = input("Prénom du joueur: ")
+            self.last_name = input("Nom du joueur: ")
+            self.age = input("Âge du joueur: ")
+            self.gender = input("Sexe du joueur: ")
+            self.rank = input("Elo du joueur: ")
 
-""" Class permettant d'ajouter des joueurs"""
+            print(f' Voici les informations du joueur: \n
+            - First name : {self.first_name}\n Souhaitez-vous valider votre sélection?")
+            choice = input("Tapez 1 pour oui ou 2 pour non)
+            if choice == "1":
+                break
 
-    def add_players():
 
-        player = PlayerModel
 
-        player.first_name = input("Prénom du joueur: ")
-        player.last_name = input("Nom du joueur: ")
-        player.age = input("Âge du joueur: ")
-        player.gender = input("Sexe du joueur: ")
-        player.rank = input("Elo du joueur: ")
-        player.id = input("Entrez l'id du joueur")
+"""-Créer joueur et le stocker dans la bdd
