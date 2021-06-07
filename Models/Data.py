@@ -11,11 +11,3 @@
 
     def load(self):
 
-class DataPlayer():
-
-    def __init__(self):
-         self.db = TinyDB('PlayerDatabase.json')
-         self.table = self.db.table("Players")
-
-    def update(self):
-        self.table.insert({"name" : self.objectTournament.name})
