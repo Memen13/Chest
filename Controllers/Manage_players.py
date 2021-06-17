@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from Models import Players
+from tinydb import TinyDB
+from Models import *
 
-class Player():
-"""
-docstring
- """
+
+class Players:
+    """
+        docstring
+    """
+
     def __init__(self):
         while True:
             self.first_name = input("Prénom du joueur: ")
@@ -31,12 +34,20 @@ docstring
             Souhaitez-vous modifier une information?""")
             choice = input("Tapez 1 pour oui ou 2 pour non")
             if choice == "1":
-                return change_player
+                pass
+                # return change_player
             else:
                 break
+        serialized_player = {
+            'name': self.first_name,
+            'last_name': self.last_name,
+            'age': self.age,
+            'gender': self.gender,
+            'rank': self.rank}
+        Player.insert(serialized_player)
 
 
-    def change_player(new_player):
+    """def change_player(new_player):
         while True:
             choice = input("Que souhaitez-vous modifier? \n 1 : Le prénom\n 2 :Le nom\n 3 : L'âge\n 4 : Sexe\n"
                            "5 : Elo du joueur")
@@ -54,8 +65,52 @@ docstring
                 new_player.gender = new_gender
             elif choice == 5:
                 new_rank = input(int("Indiquez le nouvel Elo du joueur"))
-                new_player.rank = new_rank
-            )
+                new_player.rank = new_rank"""
 
 
+from tinydb import TinyDB
 
+class Player:
+    """
+        docstring
+    """
+    def __init__(self):
+        self.db = TinyDB('PlayerDatabase.json')
+        self.table = self.db.table("Players")
+        while True:
+            self.first_name = input("Prénom du joueur: ")
+            self.last_name = input("Nom du joueur: ")
+            self.age = int(input("Âge du joueur: "))
+            while True:
+                self.gender = input("Sexe du joueur: 1: M 2: F")
+                if self.gender == "1":
+                    self.gender = "Masculin"
+                    break
+                elif self.gender == "2":
+                    self.gender = "Féminin"
+                    break
+            self.rank = int(input("Elo du joueur: "))
+
+            print(f""" Voici les informations du joueur:
+            - Prénom: {self.first_name}
+            -Nom: {self.last_name}
+            -Âge: {self.age}
+            -Sexe: {self.gender}:
+            -Elo du joueur: {self.rank}
+            Souhaitez-vous modifier une information?""")
+            choice = input("Tapez 1 pour oui ou 2 pour non")
+            if choice == "1":
+                pass
+                # return change_player
+            else:
+                break
+        serialized_player = {
+            'name': self.first_name,
+            'last_name': self.last_name,
+            'age': self.age,
+            'gender': self.gender,
+            'rank': self.rank}
+        self.table.insert(serialized_player)
+
+if __name__ == "__main__":
+    Player()

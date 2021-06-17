@@ -4,28 +4,25 @@
 from tinydb import TinyDB
 
 
-class PlayerModel():
-    """
+class PlayerModel:
+    def __init__(self):
+        self.db = TinyDB('PlayerDatabase.json')
+        self.table = self.db.table("Players")
 
-    Docstring
+ if __name__ == "__main__":
+     PlayerModel()
 
-    """
 
-    class DataPlayer():
-
-        def __init__(self):
-            self.db = TinyDB('PlayerDatabase.json')
-            self.table = self.db.table("Players")
-
-        def update(self):
+# ajouter une condition pour vérifier si la bss existe avant d'instancier
+       """ def update(self):
             self.table.insert({"name": self.objectTournament.name})
 
             # récupérer l'id
 
-    def tournament_points(self):
+def tournament_points(self):
         self.tournament_points = tournament_points
 
     def update_rank(self, new_rank):
-        self.rank = new_rank
+        self.rank = new_rank"""
 
 
