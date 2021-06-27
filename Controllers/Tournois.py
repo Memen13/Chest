@@ -137,7 +137,7 @@ def majDate(texte):
     new_objet = Objet()
     print(new_objet.date)
 
-    def majObjet(choix):
+def majObjet(choix):
         print("Pour mettre à jour la date tapez 1, pour quitter taper Q")
         if choix == "1":
             new_objet.date = majDate("du début du tournois")
