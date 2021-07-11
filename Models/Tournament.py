@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
+
 
 
 class DataTournament():
@@ -20,6 +21,9 @@ class DataTournament():
 
     def update(self, objectTournament):
         self.table.insert({"name": objectTournament.name})
+
+    def add_players(self):
+        #ajouter obligatoirement 8 joueurs.
 
 
 

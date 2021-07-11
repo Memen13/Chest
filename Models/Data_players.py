@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 def create_data():
     db = TinyDB('PlayerDatabase.json')
