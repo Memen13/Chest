@@ -36,17 +36,15 @@ def player_json():
         data_dict = json.load(json_data_player)
         print(str(data_dict).replace("{", '').replace("}", ''))
 
-def search_id():
-    player_id = name.search(where('type') == 'name')
-
+def search_by_name():
+    """docstring"""
+    # AJOUTER UNE BOUCLE POUR VOIR SI LE JOUEUR EXISTE DANS LA BDD
     player_seek = input("Indiquez le nom de joueur que vous recherchez")
     player = Query()
-    db.search(player.name == player_seek)
+    result = db.table("Players").search(player.name == player_seek)
+    print(result)
 
-def add_player()
-    with open('PlayerDatabase.json') as json_data_player:
-        player_for_tournament = input("Veuillez indiquer l'id du joueur que vous souhaitez intégrer au tournois")
-    db.get(player_for_tournament)
+
 
 
     """d_start = input("Indiquez la date du début du tournois (format JJ/MM/AAAA")
