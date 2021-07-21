@@ -3,13 +3,15 @@
 
 from tinydb import TinyDB, Query
 
-def create_data():
+def create_data_player():
     db = TinyDB('PlayerDatabase.json')
     table = db.table("Players")
-    global table
 
-def insert(serial):
-     table.insert(serial)
+def insert_players(serial):
+    db = TinyDB('PlayerDatabase.json')
+    table = db.table('Players')
+    table.insert(serial)
+
 
 def update():
     #Prendre l'id du joueur

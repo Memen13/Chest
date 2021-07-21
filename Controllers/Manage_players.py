@@ -29,40 +29,27 @@ class Players:
             -Âge: {self.age}
             -Sexe: {self.gender}:
             -Elo du joueur: {self.rank}
-            Souhaitez-vous modifier une information?""")
+            Souhaitez-vous recommencer la création du joueur afin de modifier une information?""")
             choice = input("Tapez 1 pour oui ou 2 pour non")
             if choice == "1":
-                return change_player
+                pass
             else:
+                self.save_player()
                 break
 
-        def save_player():
-            """ Add le joueur à la bdd qui est déjà créée"""
-            serialized_player = {
-                'name': self.first_name,
-                'last_name': self.last_name,
-                'age': self.age,
-                'gender': self.gender,
-                'rank': self.rank}
-            insert(serialized_player)
+    def save_player(self):
+        """ Add le joueur à la bdd qui est déjà créée"""
+        serialized_player = {
+            'name': self.first_name,
+            'last_name': self.last_name,
+            'age': self.age,
+            'gender': self.gender,
+            'rank': self.rank}
+        db = TinyDB('PlayerDatabase.json')
+        table = db.table('Players')
+        table.insert(serialized_player)
 
-    def change_player(new_player):
-        while True:
-            choice = input("Que souhaitez-vous modifier? \n 1 : Le prénom\n 2 :Le nom\n 3 : L'âge\n 4 : Sexe\n"
-                           "5 : Elo du joueur")
-            if choice == 1:
-                new_player_name = input("Indiquez le nouveau prénom:")
-                new_player.first_name = new_player_name
-            elif choice == 2:
-                new_last_name = input("Indiquez le nouveau nom:")
-                new_player.last_name = new_last_name
-            elif choice == 3:
-                new_age = input(int("Indiquez l'âge du joueur:"))
-                new_player.age = new_age
-            elif choice == 4:
-                new_gender = input("Indiquez l'âge du joueur:")
-                new_player.gender = new_gender
-            elif choice == 5:
-                new_rank = input(int("Indiquez le nouvel Elo du joueur"))
-                new_player.rank = new_rank
+
+
+
 
