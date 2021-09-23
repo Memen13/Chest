@@ -19,9 +19,4 @@ def update():
     #Créer une nouvelle fonction pour la modification du joueur
 
 
-# ajouter une condition pour vérifier si la bss existe avant d'instancier
-       """ def update(self):
-            self.table.insert({"name": self.objectTournament.name})
-
-
 

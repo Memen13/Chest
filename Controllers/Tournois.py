@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import re
+import TinyDB as tinyDB
 from Functions import *
 from Models import *
 import json
+from View import *
 
 class Tournament:
     def __init__(self, id, name, localisation, d_start, d_end, kind, description, round):
@@ -18,8 +20,9 @@ class Tournament:
         self.description = description
 
         print(f'Le tournois {self.name} a été créé')
-    def save_tournament():
-    """ Add le tournois à la bdd qui est déjà créée"""
+
+    def save_tournament(self):
+        """ Add le tournois à la bdd qui est déjà créée"""
         serialized_tournament = {
             'Nom': self.name,
             'Localisation': self.localisation,
@@ -28,13 +31,15 @@ class Tournament:
             'Round': self.round,
             'Règles': self.kind,
             'Description': self.description}
-        insert(serialized_tournament)
+        db = tinyDB('TournamentDatabase.json')
+        table = db.table('Tournois')
+        table.insert(serialized_tournament)
 
 def change_tournament_info():
     """
 
     Fonction qui permet la modification des informations principales d'un tournois déjà existant.
-
+ faire
     """
     while True:
         choice = input("Que voulez vous mettre à jour ? \n 1 : Le nom\n 2 : La localisation\n 3 : La date du début\n"

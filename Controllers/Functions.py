@@ -33,8 +33,9 @@ while True:
 def new_date(a_word):
     while True:
         date = input(f"Indiquez la date {a_word} au format JJ/MM/AAAA")
-        if len(re.findall("/^\d{2}-\d{2}-\d{4}) =$/", date)= 0:
+        if len(re.findall("/^\d{2}-\d{2}-\d{4}) =$/", date)=0:
             print("La date indiquée est au mauvais format")
+            """raise ValueError"""
         else:
             return date
 
@@ -60,14 +61,24 @@ def player_json():
         print(str(data_dict).replace("{", '').replace("}", ''))
 
 def tournament_json():
-    with open('Tour')
+    with open('TournamentDatabase.json') as json_tournament:
+        data_tournament = json.load(json_tournament)
+        print(str(data_tournament).replace("{", '').replace("}", ''))
 
-def search_by_name():
+
+def search_by_tournament_name():
+
+    tournament_seek = input ("Indiquez le nom du tournois que vous recherchez")
+    tournament = Query()
+    result = db.table('TournamentDatabase.json').search(tournament.name == tournament_seek)
+    print(result)
+
+def search_by_player_name():
     """docstring"""
-    # AJOUTER UNE BOUCLE POUR VOIR SI LE JOUEUR EXISTE DANS LA BDD
+
     player_seek = input("Indiquez le nom de joueur que vous recherchez")
     player = Query()
-    result = db.table("Players").search(player.name == player_seek)
+    result = db.table('Players').search(player.name == player_seek)
     print(result)
 
 def change_player(new_player):
