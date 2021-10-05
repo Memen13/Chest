@@ -1,6 +1,6 @@
 import re
 import json
-from tinydb import tinyDB, Query, where
+from tinydb import tinyDB, Query
 
 while True:
     choice = input("Que voulez vous mettre à jour ? \n 1 : Le nom\n 2 : La localisation\n 3 : La date du début\n"
@@ -35,7 +35,6 @@ def new_date(a_word):
         date = input(f"Indiquez la date {a_word} au format JJ/MM/AAAA")
         if len(re.findall("/^\d{2}-\d{2}-\d{4}) =$/", date)=0:
             print("La date indiquée est au mauvais format")
-            """raise ValueError"""
         else:
             return date
 
@@ -73,14 +72,6 @@ def search_by_tournament_name():
     result = db.table('TournamentDatabase.json').search(tournament.name == tournament_seek)
     print(result)
 
-def search_by_player_name():
-    """docstring"""
-
-    player_seek = input("Indiquez le nom de joueur que vous recherchez")
-    player = Query()
-    result = db.table('Players').search(player.name == player_seek)
-    print(result)
-
 def change_player(new_player):
     while True:
         choice = input("Que souhaitez-vous modifier? \n 1 : Le prénom\n 2 :Le nom\n 3 : L'âge\n 4 : Sexe\n"
@@ -102,6 +93,3 @@ def change_player(new_player):
             new_player.rank = new_rank
 
 
-    """d_start = input("Indiquez la date du début du tournois (format JJ/MM/AAAA")
-    if len(re.findall("/^\d{2}-\d{2}-\d{4}$/", d_start)) == 0:
-        print("La date indiquée est au mauvais format")"""

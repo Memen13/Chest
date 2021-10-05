@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import re
-import TinyDB as tinyDB
+from tinydb import TinyDB, where
 from Functions import *
 from Models import *
-import json
 from View import *
 
 class Tournament:
@@ -87,7 +85,43 @@ if creation_tournament == "1":
         player_json()
     else:
         break
+
+
+
+def add_player_to_tournament():
+    players_on_tournament = []
     # Entrer la liste des joueurs pour le tournois.
+    db = TinyDB('PlayerDatabase.json')
+    for i in range(8):
+        add_players = input("Indiquez les ID des joueurs à intégrer au tournois")
+        # Get data from `player's id`
+
+
+def search_by_player_name():
+    player_seek = input("Indiquez le nom du joueur que vous recherchez")
+    player = Query()
+    result = db.table('PlayerDatabase.json').search(player.name == player_seek)
+    print(result)
+
+
+listeID = list()
+data_player = "PlayerDatabase.json"
+for i in data_player.all():
+  print(db.get((where('nom') == i["nom"]) and (where("prenom") == i["prenom"])).doc_id)
+  listeID.append(db.get((where('nom') == i["nom"]) and (where("prenom") == i["prenom"])).doc_id)
+
+1- Afficher l'ensemble des informations nécessaires pour choisir les joueurs (ID, nom, prénom...)
+2- Faire une boucle pour lui donner la possibilité de d'indiquer les ID des joueurs qu'il veut
+3- Récupérer les infos des joueurs des ID susmentionné
+
+
+
+
+
+
+
+
+
 
 
 

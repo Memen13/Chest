@@ -3,6 +3,7 @@
 
 from Models.Data_players import *
 
+
 class Players:
     """
         docstring
@@ -48,8 +49,3 @@ class Players:
         db = TinyDB('PlayerDatabase.json')
         table = db.table('Players')
         table.insert(serialized_player)
-
-
-
-
-
