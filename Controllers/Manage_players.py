@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from Models.Data_players import *
-
+from .Models.Data_players import *
 
 class Players:
     """
@@ -20,9 +19,9 @@ class Players:
                     self.gender = "Masculin"
                     break
                 elif self.gender == "2":
-                    self.gender = "Féminin"
-                    break
-            self.rank = input(int("Elo du joueur: "))
+                        self.gender = "Féminin"
+                        break
+                self.rank = input(int("Elo du joueur: "))
 
             print(f""" Voici les informations du joueur:
             - Prénom: {self.first_name}

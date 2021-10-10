@@ -54,6 +54,7 @@ def tournament_rules():
         else:
             print("Votre choix n'est pas reconnu. Veuillez recommencer")
 
+#Modifier car pb compatibilité
 def player_json():
     with open('PlayerDatabase.json') as json_data_player:
         data_dict = json.load(json_data_player)

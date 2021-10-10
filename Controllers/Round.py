@@ -5,9 +5,15 @@ from Controllers.Tournament import *
 
 
 class Round:
-    def __init__(self):
+    def __init__(self, round_number=4, match):
+        self.round_number = round_number
+        # Générer 4 matchs par round depuis la fonction spécifique
+        self.match = match
 
-    def make_a_round(self):
+    def add_score(self):
+
+
+
 
 
 
