@@ -2,17 +2,28 @@
 # -*- coding: utf-8 -*-
 
 
-print("------------------------------------------------------")
-print("******************************************************")
-print("Bienvenue sur l'application tournois d'échecs")
-print("******************************************************")
-print("------------------------------------------------------")
+from View import Recurrent
+from View.Manage_tournament import *
+from View.Manage_players import *
 
-def user_choice():
-    print("Veuillez choisir l'option désirée:")
+
+def welcome():
+    print("""
+    ------------------------------------------------------
+    ******************************************************
+    BIENVENUE SUR L'APPLICATION TOURNOIS D'ECHECS
+    ******************************************************
+    ------------------------------------------------------""")
+
+    choice = input("Choisir 1 pour continuer, ou 2 pour quitter")
+    while True:
+        if choice == "1":
+            main_page()
+        elif choice == "2":
+            exit()
 
 def main_page():
-    user_choice()
+    Recurrent.user_choice()
     print("------------------------------------------------------")
     choice = input("1: Voir le menu principal\n 2: Quitter l'application ")
     print("------------------------------------------------------")
@@ -26,25 +37,14 @@ def main_page():
             print("1: Voir le menu principal\n 2: Quitter l'application ")
 
 def main_menu():
-     pass
-
-def tournament_view():
-    modifier?
-    if oui:
-        Tournois.change_tournament_info()
-def show_tournament_data():
-    pass
-def tournament_change():
-    print ("modifier?")
-        if oui:
-
-def player_view():
-    pass
-def show_player_data():
-    pass
-
-
-
-
-
-
+    Recurrent.user_choice()
+    choice = input("1: Voir le menu des tournois\n 2: Voir le menu des joueurs\n 3: Quitter")
+    while True:
+        if choice == "1":
+            tournament_menu()
+        elif choice == "2":
+            manage_player_content()
+        elif choice == "3":
+            exit()
+        else:
+            print("Le choix n'est pas reconnu! Veuillez recommencer.")
