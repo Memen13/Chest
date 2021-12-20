@@ -6,7 +6,7 @@ from Controllers.Tournament import add_player_to_tournament
 
 class Round:
    """docstring"""
-    def __init__(self, name, date, time_start,time_end):
+    def __init__(self, name, date, time_start,time_end,match_list):
         self.name = name
         self.date = date.today.strftime("%d/%m/%Y")
         self.time_start = time_start.time.now()
@@ -28,15 +28,20 @@ class Round:
         result = list()
 
         for i in range(0, 4):
-        print(f"Le match en cours oppose {match_list[0][0]} à {match_list[1][0]}")
-        print(f"Le match est terminé ! Veillez indiquer le score de {match_list[i][0]}")
-        listing = match_list[i]
-        # print(type(listing))
-        listing = list(listing)
-        valeurScore = float(input(f"{match_list[i][0]} a obtenu ... point(s)"))
-        listing.append(valeurScore)
-        listing = tuple(listing)
-        result.append(listing)
+            print(f"Le match en cours oppose {match_list[i][0]} à {match_list[i][1]}")
+            for j in range(0, 2):
+                while True:
+                    try:
+                        score_match = float(input(f"""Le match est terminé!
+                                                  Veillez indiquer le score de {match_list[i][j]}"""))
+                        break
+                    except:
+                        print("""Le score est incorrect. Veuillez indiquer un des ces scores:
+                         1 point = Victoire; 0,5 point = Match nul; 0 point = défaite""")
+
+                result.append((i, match_list[i][j], score_match))
+
+
 
 
 
@@ -45,6 +50,7 @@ class Round:
         pass
 
     def save_round(self):
+        pass
 
 
 round = Round()

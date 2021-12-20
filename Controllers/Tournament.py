@@ -10,7 +10,7 @@ from tinydb import TinyDB, Query
 
 def tournament_menu_controller():
 
-    """doctring"""
+    """docstring"""
 
     user_choice = tournament_menu_view()
     if user_choice == 1:
@@ -78,6 +78,7 @@ def tournament_rules():
 
 
 def show_tournament_data():
+
     """ Méthode afin de voir la bdd des tournois existants """
 
     db = TinyDB('TournamentDatabase.json')
@@ -85,6 +86,7 @@ def show_tournament_data():
     pprint(tournament.all())
 
 def content_tournament():
+
     """ Méthode afin de vérifier les informations d'n tournois déjà existant """
 
     tournament_seek = input("Indiquez le nom du tournois que vous recherchez")
