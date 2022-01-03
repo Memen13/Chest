@@ -3,11 +3,12 @@
 
 
 from View.Main_Menu import *
+from View.Recurrent import *
 from Controllers.Tournament import *
 from View.Recurrent import user_choice
 
 
-def tournament_menu_view():
+def tournament_menu_view(tournament_menu_controller):
     Recurrent.user_choice()
     while True:
         choice = input("1: Créer un nouveau tournois\n 2: Voir les tournois enregistrés\n 3: Charger un tournois\n "
@@ -21,6 +22,6 @@ def tournament_menu_view():
         elif choice == "4":
             return 4
         else:
-            print("Le choix n'est pas reconnu, veuillez recommencer")
+            Recurrent.unknow_choice()
             tournament_menu_view()
 

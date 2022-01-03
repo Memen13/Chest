@@ -1,7 +1,8 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from tinydb import tinyDB
+from tinydb import TinyDB
+
 
 class Players:
     """
@@ -29,10 +30,15 @@ class Players:
             -Âge: {self.age}
             -Sexe: {self.gender}
             -Elo du joueur: {self.rank}
-            Souhaitez-vous recommencer la création du joueur afin de modifier une information?""")
+            Le joueur est sur le point d'être sauvegarder. Confirmer vous les informations saisies?""")
             choice = input("Tapez 1 pour oui ou 2 pour non")
-            if choice == "1":
-                pass
+            while True:
+                if choice == "1":
+                    self.save_player()
+                    break
+                elif choice == "2":
+                    Players
+                    break
 
     def save_player(self):
         """ Add le joueur à la bdd qui est déjà créée"""
@@ -42,6 +48,11 @@ class Players:
             'age': self.age,
             'gender': self.gender,
             'rank': self.rank}
-        db = tinyDB('../Models/PlayerDatabase.json')
+        db = TinyDB('../Models/PlayerDatabase.json')
         table = db.table('Joueurs')
         table.insert(serialized_player)
+
+
+# créer différentes fonction. Ne pas publier sur le constructeur!
+
+Players()

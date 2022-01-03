@@ -33,8 +33,8 @@ def main_page():
         elif choice == "2":
             exit()
         else:
-            print("Le choix n'est pas reconnu! Veuillez recommencer.")
-            print("1: Voir le menu principal\n 2: Quitter l'application ")
+            Recurrent.unknow_choice()
+            main_page()
 
 def main_menu():
     Recurrent.user_choice()
@@ -47,4 +47,5 @@ def main_menu():
         elif choice == "3":
             exit()
         else:
-            print("Le choix n'est pas reconnu! Veuillez recommencer.")
+            Recurrent.unknow_choice()
+            main_menu()

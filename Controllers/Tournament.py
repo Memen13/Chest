@@ -3,6 +3,7 @@
 
 from Models.Data_Tournament import Tournament
 from View.Manage_tournament import *
+from View.Recurrent import *
 import pprint
 from datetime import *
 from tinydb import TinyDB, Query
@@ -30,8 +31,8 @@ def add_player_to_tournament():
     # Pour que l'id soit indiqué sur la ligne 96 sur l'input
     players_list = list()
     while True:
-        reponse = input("Connaissez vous les Id des joueurs que vous voulez ? Oui ou Non").upper()
-        if reponse == "OUI":
+        choice = input("Connaissez vous les Id des joueurs que vous voulez ? Oui ou Non").upper()
+        if choice == "OUI":
             while True:
                 id = int(input(f"Merci d'indiquer l'id du joueur {cpt} :"))
                 players_list.append((db.get(doc_id=id)["name"], db.get(doc_id=id)["last_name"],
@@ -40,7 +41,7 @@ def add_player_to_tournament():
                 if cpt == 9:
                     break
             break
-        elif reponse == "NON":
+        elif choice == "NON":
             print("Ci-dessous ")
             print(db.all())
             while True:
@@ -50,7 +51,8 @@ def add_player_to_tournament():
                     break
             break
         else:
-            print("Je ne connais pas cette réponse. Merci d'indiquer Oui ou Non")
+            Recurrent.unknow_choice()
+            add_player_to_tournament()
     return players_list
 
 def tournament_rules():
@@ -70,9 +72,7 @@ def tournament_rules():
             kind = "Coup Rapide"
             break
         else:
-            print(f"""------------------------------------------------------
-                      Votre choix n'est pas reconnu. Veuillez recommencer.
-                      ------------------------------------------------------""")
+            Recurrent.unknow_choice()
             tournament_rules()
     return kind
 

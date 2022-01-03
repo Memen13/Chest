@@ -19,6 +19,7 @@ class Tournament:
         self.player_on_tournament = add_player_to_tournament()
 
         print(f'Le tournois {self.name} a été créé')
+        save_tournament()
 
     def save_tournament(self):
         """ Add le tournois à la bdd qui est déjà créée"""
@@ -27,7 +28,7 @@ class Tournament:
             'Localisation': self.localisation,
             'Jour du début': self.d_start,
             'Jour de fin': self.d_end,
-            'Round': self.round,
+            'Round': self.number_of_round,
             'Règles': self.kind,
             'Description': self.description}
         db = tinyDB('TournamentDatabase.json')
@@ -40,14 +41,3 @@ def create_data_tournament():
 
 def update(self, objectTournament):
     self.table.insert({"name": objectTournament.name})
-
-
-"""def add_player(self):
-    # une boucle qui va ajoute 8 joueurs et sauvegarder à chaque ajout dun joueur
-    # Ouvrir le json avec tinydb pour utiliser la méthode .get
-    i = 1
-    while i < 9:
-        player_for_tournament = input("Veuillez indiquer l'id du joueur que vous souhaitez intégrer au tournois")
-        player_to_add = db.table("Players").get(doc_id=int(player_for_tournament))
-        self.table.insert(player_to_add)
-        i = i + 1"""
